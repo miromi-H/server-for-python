@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Lab — редактор и терминал</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="logo">&#9776;</span>
+            <h1>Python Lab</h1>
+        </div>
+        <div class="actions">
+            <button id="btn-run" class="btn btn-run">&#9654;&nbsp; Запустить</button>
+            <button id="btn-clear-out" class="btn btn-ghost">Очистить вывод</button>
+            <button id="btn-clear-term" class="btn btn-ghost">Очистить терминал</button>
+        </div>
+    </header>
+
+    <main class="layout">
+        <!-- Левая панель: редактор кода -->
+        <section class="panel editor-panel">
+            <div class="panel-head">
+                <span class="panel-title">Редактор Python</span>
+                <span class="status-dot" id="conn-dot" title="Состояние сервера"></span>
+            </div>
+            <textarea id="editor" spellcheck="false"
+                placeholder="# Напишите код на Python здесь...&#10;print('Привет, мир!')"></textarea>
+        </section>
+
+        <!-- Правая панель: вывод и терминал -->
+        <section class="panel">
+            <div class="tabs">
+                <button class="tab active" data-tab="output">Вывод</button>
+                <button class="tab" data-tab="terminal">Терминал</button>
+            </div>
+
+            <div id="tab-output" class="tab-content active">
+                <div class="output" id="output"></div>
+            </div>
+
+            <div id="tab-terminal" class="tab-content">
+                <div class="terminal" id="terminal"></div>
+                <div class="terminal-input-row">
+                    <span class="prompt">$</span>
+                    <input type="text" id="term-input" placeholder="введите команду (например: dir / python --version)" autocomplete="off">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
